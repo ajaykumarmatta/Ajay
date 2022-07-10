@@ -16,4 +16,15 @@ describe("Unit testing for login Component",()=>{
         wrapper.find("input[type='password']").simulate('change',{target:{name:"psw",value:'murali123'}});
         expect(wrapper.state('psw')).toEqual('murali123');
     })
+
+    test("login with correct data",()=>{
+        wrapper = shallow('<Login/>');
+        wrapper.find("input[type='text']").simulate('change',{target:{name:'uname',value:"murali"}});
+
+        wrapper.find("input[type='password']").simulate('change',{target:{name:'psw',value:"murali123"}});
+
+        wrapper.find("input[type='submit']").simulate('click');
+
+        expect(wrapper.state('isLogined')).toBe(true);
+    })
 });
